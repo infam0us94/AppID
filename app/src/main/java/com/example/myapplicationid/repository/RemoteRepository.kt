@@ -8,16 +8,16 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RemoteRepository private constructor(): Repository {
+class RemoteRepository private constructor() : Repository {
 
-init {
-    createApi()
-}
+    init {
+        createApi()
+    }
 
     companion object {
-        private var repo : RemoteRepository? = null
+        private var repo: RemoteRepository? = null
 
-        fun getInstance() : RemoteRepository {
+        fun getInstance(): RemoteRepository {
             if (repo == null) {
                 repo = RemoteRepository()
             }
@@ -34,7 +34,7 @@ init {
         token
     )
 
-    override fun getUser(id: Int?): Call<UserResponse> = api.getUser (
+    override fun getUser(id: Int?): Call<UserResponse> = api.getUser(
         id,
         format,
         token
@@ -49,11 +49,9 @@ init {
                     level = HttpLoggingInterceptor.Level.BODY
                 })
             }
-            .build())
+                .build())
             .build()
 
         api = retrofit.create(ApiInterface::class.java)
     }
-
-
 }

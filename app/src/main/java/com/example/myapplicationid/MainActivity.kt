@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplicationid.user_list.UserListFragment
 import com.example.myapplicationid.user_profile.UserProfileFragment
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,18 +14,16 @@ class MainActivity : AppCompatActivity(){
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_container,UserListFragment.newInstance())
+            .replace(R.id.fragment_container, UserListFragment.newInstance())
             .commit()
-
     }
 
     fun showProfile(id: Int) {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_container,UserProfileFragment.newInstance(id))
-            .addToBackStack("")
+            .replace(R.id.fragment_container, UserProfileFragment.newInstance(id))
+            .addToBackStack(" ")
             .commit()
     }
-
 }

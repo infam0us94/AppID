@@ -14,17 +14,19 @@ import com.example.myapplicationid.repository.entity.ResultItem
 import com.example.myapplicationid.repository.entity.UserListResponse
 import kotlinx.android.synthetic.main.fragment_fist.*
 
-class UserListFragment : Fragment(),ResultItemAdapter.OnItemClickListener{
+class UserListFragment : Fragment(), ResultItemAdapter.OnItemClickListener {
 
-companion object{
-    fun newInstance() = UserListFragment()
-}
-
-
+    companion object {
+        fun newInstance() = UserListFragment()
+    }
     lateinit var mViewModel: UserListViewModel
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_fist, container, false)
     }
 
@@ -46,8 +48,6 @@ companion object{
             recyclerView.layoutManager =
                 LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
         }
-
-
     }
 
     private val userListObserver = Observer<UserListResponse> { result ->
@@ -56,9 +56,7 @@ companion object{
 
     override fun onItemClick(item: ResultItem) {
         (activity as MainActivity).showProfile(item.id!!)
-
     }
-
 }
 
 

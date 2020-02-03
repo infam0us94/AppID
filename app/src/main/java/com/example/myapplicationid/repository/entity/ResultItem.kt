@@ -1,7 +1,6 @@
 package com.example.myapplicationid.repository.entity
 
 data class ResultItem (
-
     val website: String? = null,
     val address: String? = null,
     val gender: String? = null,

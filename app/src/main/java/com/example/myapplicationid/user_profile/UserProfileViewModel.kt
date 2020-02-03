@@ -27,8 +27,6 @@ class UserProfileViewModel : ViewModel() {
                 ) {
                     userLiveData.postValue(response.body())
                 }
-
-
             })
     }
 }

@@ -9,28 +9,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplicationid.R
 import com.example.myapplicationid.repository.entity.ResultItem
 
-class ResultItemAdapter( private val callback: OnItemClickListener? ) : RecyclerView.Adapter<ResultItemAdapter.ViewHolder>() {
+class ResultItemAdapter(private val callback: OnItemClickListener?) :
+    RecyclerView.Adapter<ResultItemAdapter.ViewHolder>() {
 
 
-var list = emptyList<ResultItem>()
-
+    var list = emptyList<ResultItem>()
 
 
     interface OnItemClickListener {
-        fun onItemClick (item: ResultItem)
+        fun onItemClick(item: ResultItem)
     }
 
-     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-         private val firstName: TextView = itemView.findViewById(R.id.first_name)
-         private val lastName: TextView = itemView.findViewById(R.id.last_name)
-         private val imgAvatar: ImageView = itemView.findViewById(R.id.image_view)
+        private val firstName: TextView = itemView.findViewById(R.id.first_name)
+        private val lastName: TextView = itemView.findViewById(R.id.last_name)
+        private val imgAvatar: ImageView = itemView.findViewById(R.id.image_view)
 
-        fun bind (data: ResultItem){
+        fun bind(data: ResultItem) {
 
             firstName.text = data.firstName.toString()
             lastName.text = data.lastName.toString()
-
         }
     }
 
@@ -38,20 +37,19 @@ var list = emptyList<ResultItem>()
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.recycler_item, parent, false)
         )
-
     }
 
-    override fun getItemCount() = list.size
-
+    override fun getItemCount(): Int {
+       return list.size
+    }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val currentItem = list [position]
+        val currentItem = list[position]
         holder.bind(currentItem)
         holder.itemView.setOnClickListener {
             callback?.onItemClick(list[holder.adapterPosition])
         }
-
     }
 }
