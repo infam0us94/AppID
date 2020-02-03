@@ -9,56 +9,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplicationid.R
 import com.example.myapplicationid.repository.entity.ResultItem
 
-class ResultItemAdapter( var list: ArrayList<ResultItem>) : RecyclerView.Adapter<ResultItemAdapter.ViewHolder>() {
-
-//    ,val onClick: ((ResultItem) -> Unit)?
-
-//   val list = emptyList<ResultItem>()
-
-//    private val resItem: MutableList<ResultItem> = LinkedList()
+class ResultItemAdapter( private val callback: OnItemClickListener? ) : RecyclerView.Adapter<ResultItemAdapter.ViewHolder>() {
 
 
-    private var mListener:OnItemClickListener? = null
+var list = emptyList<ResultItem>()
+
+
 
     interface OnItemClickListener {
-        fun onItemClick (position: Int)
+        fun onItemClick (item: ResultItem)
     }
 
-    fun setOnItemClickListener (listener: OnItemClickListener? ) {
-        mListener = listener
-    }
+     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+         private val firstName: TextView = itemView.findViewById(R.id.first_name)
+         private val lastName: TextView = itemView.findViewById(R.id.last_name)
+         private val imgAvatar: ImageView = itemView.findViewById(R.id.image_view)
 
-         var first_name: TextView
-         var last_name: TextView
-         var imgAvatar: ImageView
+        fun bind (data: ResultItem){
 
-        init {
-            first_name = itemView.findViewById(R.id.firstName)
-            last_name = itemView.findViewById(R.id.lastName)
-            imgAvatar =  itemView.findViewById(R.id.imageView)
-            itemView.setOnClickListener{
-                if (mListener != null) {
-                    val position = adapterPosition
-                    if (position != RecyclerView.NO_POSITION) {
-                   mListener!!.onItemClick(position)
-                    }
-                }
-            }
+            firstName.text = data.firstName.toString()
+            lastName.text = data.lastName.toString()
+
         }
-
-
-
-
-//        fun bind(item: ResultItem, onClick: ((ResultItem) -> Unit)?) {
-//
-//            first_name.text = item.firstName
-//            last_name.text = item.lastName
-//
-//            itemView.setOnClickListener { onClick?.invoke(item) }
-//
-//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -68,23 +41,17 @@ class ResultItemAdapter( var list: ArrayList<ResultItem>) : RecyclerView.Adapter
 
     }
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    override fun getItemCount() = list.size
+
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val currentItem = list [position]
-        val firstName: String? = currentItem.firstName
-        val lastName: String? = currentItem.lastName
-        holder.first_name.text = firstName
-        holder.last_name.text = lastName
+        holder.bind(currentItem)
+        holder.itemView.setOnClickListener {
+            callback?.onItemClick(list[holder.adapterPosition])
+        }
 
-
-//        holder.bind(list[position], onClick)
     }
-
-//    interface DataCallback {
-//        fun itemClicked(data: ResultItem)
-//    }
 }

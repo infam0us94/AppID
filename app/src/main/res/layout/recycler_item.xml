@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:rar="http://schemas.android.com/tools"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="18sp">
 
     <RelativeLayout
         android:id="@+id/view_foreground"
@@ -20,33 +20,33 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:padding="2dp"
-            android:id="@+id/imageView"/>
+            android:id="@+id/image_view"/>
 
         <TextView
-            android:id="@+id/firstName"
+            android:id="@+id/first_name"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageView"
+            android:layout_alignTop="@+id/image_view"
             android:layout_marginStart="10dp"
             android:text="@string/first_name"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toEndOf="@+id/image_view"
             />
         <TextView
-            android:id="@+id/lastName"
+            android:id="@+id/last_name"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/firstName"
+            android:layout_below="@+id/first_name"
             android:layout_marginStart="10dp"
             android:ellipsize="end"
             android:text="@string/last_name"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_toEndOf="@id/imageView"
+            android:layout_toEndOf="@id/image_view"
             />
 
     </RelativeLayout>
