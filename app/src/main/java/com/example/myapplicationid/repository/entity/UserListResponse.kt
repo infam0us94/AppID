@@ -1,5 +1,5 @@
 package com.example.myapplicationid.repository.entity
 
 data class UserListResponse (
-    val result: List<ResultItem>? = null
+    val result: List<ResultItem>
     )

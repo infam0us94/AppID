@@ -50,19 +50,19 @@ class UserProfileFragment : Fragment() {
     }
 
     fun showProfile(data: ResultItem?) {
-        if (data != null) {
-            user_first_name.text = data.firstName.toString()
-            user_last_name.text = data.lastName.toString()
-            user_item_id.text = data.id.toString()
-            user_address.text = data.address.toString()
-            user_gender.text = data.gender.toString()
-            user_phone_number.text = data.phone.toString()
-            user_dob.text = data.dob.toString()
-            user_email.text = data.email.toString()
-            user_status.text = data.status.toString()
-            user_website.text = data.website.toString()
 
-        }
+            user_first_name.text = data?.firstName.toString()
+            user_last_name.text = data?.lastName.toString()
+            user_item_id.text = data?.id.toString()
+            user_address.text = data?.address.toString()
+            user_gender.text = data?.gender.toString()
+            user_phone_number.text = data?.phone.toString()
+            user_dob.text = data?.dob.toString()
+            user_email.text = data?.email.toString()
+            user_status.text = data?.status.toString()
+            user_website.text = data?.website.toString()
+
+
     }
 
     private val userProfileObserver = Observer<UserResponse> {

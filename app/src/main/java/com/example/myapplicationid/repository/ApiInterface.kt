@@ -15,13 +15,9 @@ interface ApiInterface {
         @Query("access-token") accessToken: String
     ): Call<UserListResponse>
 
-    @GET("public-api/users/{userId}") fun getUser(
-        @Path ("userId") Id: Int?,
+    @GET("public-api/users/{id}") fun getUser(
+        @Path ("id") Id: Int?,
         @Query("_format") format: String,
         @Query ("access-token") accessToken: String
     ): Call<UserResponse>
-
-
-
-
 }
